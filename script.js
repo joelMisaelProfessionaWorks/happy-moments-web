@@ -165,11 +165,18 @@ function cerrarModalConfirmacion() {
     document.getElementById('confirm-modal').style.display = 'none';
 }
 
-// Validación en tiempo real del calendario nativo
+// Validación en tiempo real del calendario nativo y bloqueo de días pasados
 document.addEventListener('DOMContentLoaded', () => {
-    // Al cargar, si ya existe el input de fecha le agregamos el evento
     const inputFecha = document.getElementById('evento-fecha');
     if (inputFecha) {
+        // Bloquear fechas del pasado estableciendo el atributo 'min' al día de hoy
+        const hoy = new Date();
+        const yyyy = hoy.getFullYear();
+        const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+        const dd = String(hoy.getDate()).padStart(2, '0');
+        inputFecha.min = `${yyyy}-${mm}-${dd}`;
+
+        // Validación de fines de semana
         inputFecha.addEventListener('change', function() {
             if (!this.value) return;
             const fechaObj = new Date(this.value + "T12:00:00");
@@ -202,15 +209,15 @@ function confirmarYEnviar() {
     const fechaFormateada = fechaObj.toLocaleDateString('es-MX', opcionesFecha);
 
     const telefono = "528448804726";
-    let texto = "¡Hola Happy Moments! 👋\n\nMe gustaría cotizar los siguientes servicios:\n\n";
+    let texto = "¡Hola! \n\nMe gustaría cotizar los siguientes servicios:\n\n";
 
     productosSeleccionados.forEach((prod, i) => {
         texto += `${i + 1}. ${prod.nombre} ($${prod.price} MX)\n`;
     });
     
-    texto += `\n*TOTAL APROXIMADO:* $${totalPrecio} MX\n`;
-    texto += `\n*📅 FECHA DEL EVENTO:* ${fechaFormateada}\n`;
-    texto += `\n¿Tienen disponibilidad? Quedo a la espera de sus comentarios.`;
+    texto += `\n*TOTAL:* $${totalPrecio} MX\n`;
+    texto += `\n*FECHA SOLICITADA DEL EVENTO:* ${fechaFormateada}\n`;
+    texto += `\nQuisiera ordenar estos productos para esa fecha ¿hay algún problema?`;
 
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
