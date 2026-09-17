@@ -319,6 +319,7 @@ nav a:hover:after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
+    align-items: start; /* Evita que las tarjetas se estiren creando espacios vacíos */
 }
 
 .product-card {
@@ -576,7 +577,7 @@ footer {
     gap: 8px;
     width: 100%;
     padding: 12px;
-    margin-top: auto; /* IMPORTANTE: empuja el botón hasta el fondo de la tarjeta */
+    margin-top: 20px; /* Separación con el precio */
     background-color: #ffffff !important;
     border: 2px solid #6c5ce7 !important;
     color: #6c5ce7 !important;
