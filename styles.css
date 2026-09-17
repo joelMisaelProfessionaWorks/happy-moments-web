@@ -328,6 +328,9 @@ nav a:hover:after {
     transition: all 0.4s ease;
     position: relative;
     top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card:hover {
@@ -336,7 +339,7 @@ nav a:hover:after {
 }
 
 .product-img {
-    height: 400px;
+    height: 300px;
     overflow: hidden;
 }
 
@@ -354,6 +357,9 @@ nav a:hover:after {
 .product-info {
     padding: 25px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .product-tag {
@@ -565,27 +571,21 @@ footer {
 
 .btn-select {
     display: flex !important;
-    /* Forzamos a que el navegador lo dibuje sí o sí */
     align-items: center;
     justify-content: center;
     gap: 8px;
     width: 100%;
     padding: 12px;
-    /* Un poco más de espacio interno */
-    margin-top: 15px;
+    margin-top: auto; /* IMPORTANTE: empuja el botón hasta el fondo de la tarjeta */
     background-color: #ffffff !important;
-    /* Fondo blanco inicial para que resalte sobre la tarjeta morada */
     border: 2px solid #6c5ce7 !important;
-    /* Morado fijo por si falla tu variable */
     color: #6c5ce7 !important;
-    /* Texto morado fijo */
     font-weight: bold;
     font-size: 14px;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    /* Evita que se solape por fallas de overflow */
     z-index: 10;
 }
 
