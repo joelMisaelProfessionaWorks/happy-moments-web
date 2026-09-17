@@ -209,15 +209,22 @@ function confirmarYEnviar() {
     const fechaFormateada = fechaObj.toLocaleDateString('es-MX', opcionesFecha);
 
     const telefono = "528448804726";
-    let texto = "¡Hola! \n\nMe gustaría cotizar los siguientes servicios:\n\n";
+    let texto = "¡Hola! Buenas tardes.\n\nMe gustaría solicitar la cotización y disponibilidad de los siguientes servicios para un evento:\n\n";
 
     productosSeleccionados.forEach((prod, i) => {
-        texto += `${i + 1}. ${prod.nombre} ($${prod.price} MX)\n`;
+        texto += `${i + 1}. ${prod.nombre} — $${prod.price.toLocaleString('en-US')} MXN\n`;
     });
     
-    texto += `\n*TOTAL:* $${totalPrecio} MX\n`;
-    texto += `\n*FECHA SOLICITADA DEL EVENTO:* ${fechaFormateada}\n`;
-    texto += `\nQuisiera ordenar estos productos para esa fecha ¿hay algún problema?`;
+    texto += `\nTotal: $${totalPrecio.toLocaleString('en-US')} MXN\n`;
+    texto += `\nFecha del evento: ${fechaFormateada}.\n`;
+    let serviciosText = "estos servicios";
+    if (productosSeleccionados.length === 1) {
+        serviciosText = "este servicio";
+    } else if (productosSeleccionados.length === 2) {
+        serviciosText = "ambos servicios";
+    }
+
+    texto += `\nMe gustaría reservar ${serviciosText} para esa fecha. ¿Podrían confirmarme si tienen disponibilidad y si existe algún inconveniente con realizar la reservación?\n\nQuedo atento. ¡Muchas gracias!`;
 
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
