@@ -1,0 +1,10 @@
+name = "admin-backend"
+main = "src/index.js"
+compatibility_date = "2023-10-30"
+
+# Descomenta las siguientes líneas después de crear tu base de datos D1
+# y reemplaza "PEGA_AQUI_TU_DATABASE_ID" con el ID real que te devuelva el comando
+[[d1_databases]]
+binding = "DB"
+database_name = "happy-moments-db"
+database_id = "e8d00489-bb99-4ab8-b6ad-12ff5808b698"

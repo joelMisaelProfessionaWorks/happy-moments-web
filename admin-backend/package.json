@@ -1,0 +1,13 @@
+{
+  "name": "admin-backend",
+  "version": "1.0.0",
+  "description": "Backend para el panel de administración de Happy Moments",
+  "main": "src/index.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
