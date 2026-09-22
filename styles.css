@@ -429,8 +429,8 @@ footer {
 
 .footer-content {
     display: grid;
-    /* Forzamos 3 columnas de igual tamaño */
-    grid-template-columns: repeat(3, 1fr);
+    /* Forzamos 4 columnas de igual tamaño */
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-bottom: 50px;
 }
